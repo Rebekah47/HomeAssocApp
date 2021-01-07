@@ -3,6 +3,7 @@ package com.example.bekah.homeAssoc.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,4 +37,83 @@ public class Job {
     @JsonIgnoreProperties({"job"})
     @OneToMany(mappedBy="transaction", cascade=CascadeType.ALL)
     private List<Transaction> transactions;
+
+
+    public Job(Long id, String name, String description, Flat flat, Boolean approved, Float cost, String location) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.flat = flat;
+        this.approved = approved;
+        this.cost = cost;
+        this.location = location;
+        this.transactions = new ArrayList<Transaction>();
+    }
+
+    public Job() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Flat getFlat() {
+        return flat;
+    }
+
+    public void setFlat(Flat flat) {
+        this.flat = flat;
+    }
+
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
+
+    public Float getCost() {
+        return cost;
+    }
+
+    public void setCost(Float cost) {
+        this.cost = cost;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 }

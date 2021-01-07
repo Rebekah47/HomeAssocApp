@@ -40,6 +40,14 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     public Long getId() {
         return id;
     }

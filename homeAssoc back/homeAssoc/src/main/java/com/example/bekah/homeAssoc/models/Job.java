@@ -3,6 +3,7 @@ package com.example.bekah.homeAssoc.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="jobs")
@@ -31,4 +32,8 @@ public class Job {
 
     @Column(name="location")
     private String location;
+
+    @JsonIgnoreProperties({"job"})
+    @OneToMany(mappedBy="transaction", cascade=CascadeType.ALL)
+    private List<Transaction> transactions;
 }

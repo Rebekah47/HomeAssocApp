@@ -29,8 +29,7 @@ public class Transaction {
     @JoinColumn(name="account_id", nullable = false)
     private Account account;
 
-    public Transaction(Long id, Float amount, LocalDate date, Job job, Account account) {
-        this.id = id;
+    public Transaction(Float amount, LocalDate date, Job job, Account account) {
         this.amount = amount;
         this.date = date;
         this.job = job;

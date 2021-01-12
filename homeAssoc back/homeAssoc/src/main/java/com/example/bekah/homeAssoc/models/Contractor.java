@@ -19,25 +19,20 @@ public class Contractor {
     private String name;
 
     @Column(name="phoneNumber")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @Column(name="profession")
     private String profession;
-
-    @Column(name="rates")
-    private Float rates;
 
     @JsonIgnoreProperties({"contractors"})
     @ManyToOne
     @JoinColumn(name="contractor_id", nullable = false)
     private List<Job> jobs;
 
-    public Contractor(Long id, String name, Integer phoneNumber, String profession, Float rates) {
-        this.id = id;
+    public Contractor(String name, String phoneNumber, String profession) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.profession = profession;
-        this.rates = rates;
         this.jobs = new ArrayList<Job>();
     }
 
@@ -60,11 +55,11 @@ public class Contractor {
         this.name = name;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -74,14 +69,6 @@ public class Contractor {
 
     public void setProfession(String profession) {
         this.profession = profession;
-    }
-
-    public Float getRates() {
-        return rates;
-    }
-
-    public void setRates(Float rates) {
-        this.rates = rates;
     }
 
     public List<Job> getJobs() {

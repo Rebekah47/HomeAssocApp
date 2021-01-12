@@ -55,8 +55,7 @@ public class Account {
     @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
     private List<Contractor> contractors;
 
-    public Account(Long id, Building building, Float pot, String address) {
-        this.id = id;
+    public Account(Float pot, String address) {
         this.transactions = new ArrayList<Transaction>();
         this.proposed = new ArrayList<Job>();
         this.accepted = new ArrayList<Job>();

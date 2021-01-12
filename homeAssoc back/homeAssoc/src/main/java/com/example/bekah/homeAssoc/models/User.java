@@ -21,8 +21,7 @@ public class User {
     @JoinColumn(name="flat-_id", nullable = false)
     private Flat flat;
 
-    public User(Long id, String name, Flat flat) {
-        this.id = id;
+    public User(String name, Flat flat) {
         this.name = name;
         this.flat = flat;
     }

@@ -29,7 +29,7 @@ public class Job {
     private Boolean approved;
 
     @Column(name="cost")
-    private Float cost;
+    private Double cost;
 
     @Column(name="location")
     private String location;
@@ -39,8 +39,7 @@ public class Job {
     private List<Transaction> transactions;
 
 
-    public Job(Long id, String name, String description, Flat flat, Boolean approved, Float cost, String location) {
-        this.id = id;
+    public Job(String name, String description, Flat flat, Boolean approved, Double cost, String location) {
         this.name = name;
         this.description = description;
         this.flat = flat;
@@ -93,11 +92,11 @@ public class Job {
         this.approved = approved;
     }
 
-    public Float getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(Float cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 

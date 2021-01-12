@@ -24,8 +24,7 @@ public class Flat {
     @Column(name="occupied_status")
     private Boolean occupied_status;
 
-    public Flat(Long id, String name, Boolean occupied_status) {
-        this.id = id;
+    public Flat(String name, Boolean occupied_status) {
         this.name = name;
         this.users = new ArrayList<User>();
         this.occupied_status = occupied_status;
@@ -33,6 +32,7 @@ public class Flat {
 
     public Flat() {
     }
+
 
     public Long getId() {
         return id;

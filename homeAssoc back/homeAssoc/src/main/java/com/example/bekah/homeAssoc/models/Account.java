@@ -16,37 +16,46 @@ public class Account {
     private Long id;
 
     @JsonIgnoreProperties({"account"})
-    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<Transaction> transactions;
 
     @JsonIgnoreProperties({"account"})
-    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
-    private List<Job>proposed;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Job> proposed;
 
     @JsonIgnoreProperties({"account"})
-    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
-    private List<Job>accepted;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Job> accepted;
 
     @JsonIgnoreProperties({"account"})
-    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
-    private List<Job>rejected;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Job> rejected;
 
     @JsonIgnoreProperties({"account"})
-    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
-    private List<Job>completed;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Job> completed;
 
     @JsonIgnoreProperties({"account"})
-    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
-    private List<Job>in_progress;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Job> in_progress;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="building_id", referencedColumnName = "id")
-    private Building building;
 
-    @Column(name="pot")
+    @Column(name = "pot")
     private Float pot;
 
-    public Account(Long id, Building building, Float pot) {
+    @Column(name="address")
+    private String address;
+
+    @JsonIgnoreProperties({"account"})
+    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
+    private List<Flat> flats;
+
+
+    @JsonIgnoreProperties({"account"})
+    @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
+    private List<Contractor> contractors;
+
+    public Account(Long id, Building building, Float pot, String address) {
         this.id = id;
         this.transactions = new ArrayList<Transaction>();
         this.proposed = new ArrayList<Job>();
@@ -54,8 +63,10 @@ public class Account {
         this.rejected = new ArrayList<Job>();
         this.completed = new ArrayList<Job>();
         this.in_progress = new ArrayList<Job>();
-        this.building = building;
         this.pot = pot;
+        this.address = address;
+        this.flats = new ArrayList<Flat>();
+        this.contractors = new ArrayList<Contractor>();
     }
 
     public Account() {
@@ -117,19 +128,35 @@ public class Account {
         this.in_progress = in_progress;
     }
 
-    public Building getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(Building building) {
-        this.building = building;
-    }
-
     public Float getPot() {
         return pot;
     }
 
     public void setPot(Float pot) {
         this.pot = pot;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Flat> getFlats() {
+        return flats;
+    }
+
+    public void setFlats(List<Flat> flats) {
+        this.flats = flats;
+    }
+
+    public List<Contractor> getContractors() {
+        return contractors;
+    }
+
+    public void setContractors(List<Contractor> contractors) {
+        this.contractors = contractors;
     }
 }

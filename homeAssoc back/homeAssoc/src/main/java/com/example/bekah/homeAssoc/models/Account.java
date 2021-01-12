@@ -41,7 +41,7 @@ public class Account {
 
 
     @Column(name = "pot")
-    private Float pot;
+    private Double pot;
 
     @Column(name="address")
     private String address;
@@ -55,7 +55,7 @@ public class Account {
     @OneToMany(mappedBy="account", cascade=CascadeType.ALL)
     private List<Contractor> contractors;
 
-    public Account(Float pot, String address) {
+    public Account(Double pot, String address) {
         this.transactions = new ArrayList<Transaction>();
         this.proposed = new ArrayList<Job>();
         this.accepted = new ArrayList<Job>();
@@ -70,6 +70,7 @@ public class Account {
 
     public Account() {
     }
+
 
     public Long getId() {
         return id;
@@ -127,11 +128,11 @@ public class Account {
         this.in_progress = in_progress;
     }
 
-    public Float getPot() {
+    public Double getPot() {
         return pot;
     }
 
-    public void setPot(Float pot) {
+    public void setPot(Double pot) {
         this.pot = pot;
     }
 

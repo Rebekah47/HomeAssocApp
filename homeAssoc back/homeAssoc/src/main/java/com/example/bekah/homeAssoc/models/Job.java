@@ -28,6 +28,9 @@ public class Job {
     @Column(name="approved")
     private Boolean approved;
 
+    @Column(name="completed")
+    private Boolean completed;
+
     @Column(name="cost")
     private Double cost;
 
@@ -35,21 +38,50 @@ public class Job {
     private String location;
 
     @JsonIgnoreProperties({"job"})
-    @OneToMany(mappedBy="transaction", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="job", cascade=CascadeType.ALL)
     private List<Transaction> transactions;
 
+    @JsonIgnoreProperties({"jobs"})
+    @ManyToOne
+    @JoinColumn(name="contractor_id", nullable = false)
+    private Contractor contractor;
 
-    public Job(String name, String description, Flat flat, Boolean approved, Double cost, String location) {
+    @JsonIgnoreProperties({"jobs"})
+    @ManyToOne
+    @JoinColumn(name="account_id", nullable = false)
+    private Account account;
+
+
+    public Job(String name, String description, Flat flat, Account account, Boolean approved, Boolean completed, Double cost, String location, Contractor contractor) {
         this.name = name;
+        this.contractor = contractor;
         this.description = description;
         this.flat = flat;
+        this.account = account;
         this.approved = approved;
+        this.completed = completed;
         this.cost = cost;
         this.location = location;
         this.transactions = new ArrayList<Transaction>();
     }
 
     public Job() {
+    }
+
+    public Contractor getContractor() {
+        return contractor;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public void setContractor(Contractor contractor) {
+        this.contractor = contractor;
     }
 
     public Long getId() {
@@ -114,5 +146,13 @@ public class Job {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
     }
 }

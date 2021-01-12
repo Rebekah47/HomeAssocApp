@@ -21,18 +21,44 @@ public class Flat {
     @OneToMany(mappedBy = "flat", cascade = CascadeType.ALL)
     private List<User> users;
 
+    @JsonIgnoreProperties({"flats"})
+    @OneToMany(mappedBy = "flat", cascade = CascadeType.ALL)
+    private List<Job> jobs;
+
+    @JsonIgnoreProperties({"flats"})
+    @ManyToOne
+    @JoinColumn(name="account_id", nullable = false)
+    private Account account;
+
     @Column(name="occupied_status")
     private Boolean occupied_status;
 
-    public Flat(String name, Boolean occupied_status) {
+    public Flat(String name, Boolean occupied_status, Account account) {
         this.name = name;
         this.users = new ArrayList<User>();
         this.occupied_status = occupied_status;
+        this.jobs = new ArrayList<Job>();
+        this.account = account;
     }
 
     public Flat() {
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 
     public Long getId() {
         return id;

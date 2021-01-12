@@ -1,7 +1,6 @@
 package com.example.bekah.homeAssoc.controllers;
 
 import com.example.bekah.homeAssoc.models.Account;
-import com.example.bekah.homeAssoc.models.Building;
 import com.example.bekah.homeAssoc.repositories.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -29,14 +29,28 @@ public class Contractor {
     @JoinColumn(name="contractor_id", nullable = false)
     private List<Job> jobs;
 
-    public Contractor(String name, String phoneNumber, String profession) {
+    @JsonIgnoreProperties({"contractors"})
+    @ManyToOne
+    @JoinColumn(name="account_id", nullable = false)
+    private Account account;
+
+    public Contractor(String name, String phoneNumber, String profession, Account account) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.profession = profession;
+        this.account = account;
         this.jobs = new ArrayList<Job>();
     }
 
     public Contractor() {
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Long getId() {

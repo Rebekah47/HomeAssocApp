@@ -7,6 +7,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -32,6 +34,11 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader(){}
 
     public void run(ApplicationArguments args){
+
+        LocalDate localDate1 = LocalDate.of(2020, 9, 17);
+        LocalDate localDate2 = LocalDate.of(2020, 9, 22);
+        LocalDate localDate3 = LocalDate.of(2020, 12, 1);
+        LocalDate localDate4 = LocalDate.of(2020, 12, 8);
 
         Account account1 = new Account(2500.50, "6 Whitefield Road, Glasgow, G51 2YD");
         accountRepo.save(account1);
@@ -89,6 +96,15 @@ public class DataLoader implements ApplicationRunner {
         jobRepo.save(job3);
         jobRepo.save(job4);
         jobRepo.save(job5);
+
+        Transaction transaction1 = new Transaction(100.50, localDate1, job1, account1);
+        Transaction transaction2 = new Transaction(100.50, localDate2, job2, account1);
+        Transaction transaction3 = new Transaction(100.50, localDate3, job3, account1);
+        Transaction transaction4 = new Transaction(100.50, localDate4, job4, account1);
+        transactionRepo.save(transaction1);
+        transactionRepo.save(transaction2);
+        transactionRepo.save(transaction3);
+        transactionRepo.save(transaction4);
 
     }
 

@@ -14,7 +14,7 @@ public class Transaction {
     private Long id;
 
     @Column(name="amount")
-    private Float amount;
+    private Double amount;
 
     @Column(name="date")
     private LocalDate date;
@@ -29,7 +29,7 @@ public class Transaction {
     @JoinColumn(name="account_id", nullable = false)
     private Account account;
 
-    public Transaction(Float amount, LocalDate date, Job job, Account account) {
+    public Transaction(Double amount, LocalDate date, Job job, Account account) {
         this.amount = amount;
         this.date = date;
         this.job = job;
@@ -55,11 +55,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

@@ -18,7 +18,7 @@ public class User {
 
     @JsonIgnoreProperties({"users"})
     @ManyToOne
-    @JoinColumn(name="flat-_id", nullable = false)
+    @JoinColumn(name="flat_id", nullable = false)
     private Flat flat;
 
     public User(String name, Flat flat) {

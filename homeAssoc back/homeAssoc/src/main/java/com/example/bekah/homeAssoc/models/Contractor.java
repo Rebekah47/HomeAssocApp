@@ -24,9 +24,8 @@ public class Contractor {
     @Column(name="profession")
     private String profession;
 
-    @JsonIgnoreProperties({"contractors"})
-    @ManyToOne
-    @JoinColumn(name="contractor_id", nullable = false)
+    @JsonIgnoreProperties({"contractor"})
+    @OneToMany(mappedBy="contractor", cascade=CascadeType.ALL)
     private List<Job> jobs;
 
     @JsonIgnoreProperties({"contractors"})

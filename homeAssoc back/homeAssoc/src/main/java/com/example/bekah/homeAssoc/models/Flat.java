@@ -91,4 +91,12 @@ public class Flat {
     public void setOccupied_status(Boolean occupied_status) {
         this.occupied_status = occupied_status;
     }
+
+    public void addUser(User user){
+        this.users.add(user);
+    }
+
+    public void addJob(Job job){
+        this.jobs.add(job);
+    }
 }

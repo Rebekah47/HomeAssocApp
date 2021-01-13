@@ -155,4 +155,8 @@ public class Job {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
+
+    public void addTransactions(Transaction transaction){
+        this.transactions.add(transaction);
+    }
 }

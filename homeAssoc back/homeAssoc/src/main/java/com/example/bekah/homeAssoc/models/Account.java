@@ -159,4 +159,38 @@ public class Account {
     public void setContractors(List<Contractor> contractors) {
         this.contractors = contractors;
     }
+
+    public void addProposedJob(Job job){
+        this.proposed.add(job);
+    }
+
+    public void addTransaction(Transaction transaction){
+        this.transactions.add(transaction);
+    }
+
+    public void addAcceptedJob(Job job){
+        this.accepted.add(job);
+    }
+
+    public void addRejectedJob(Job job){
+        this.rejected.add(job);
+    }
+
+    public void addCompletedJob(Job job){
+        this.completed.add(job);
+    }
+
+    public void addInProgressJob(Job job){
+        this.in_progress.add(job);
+    }
+    public void addContractor(Contractor contractor){
+        this.contractors.add(contractor);
+    }
+    public void addFlat(Flat flat){
+        this.flats.add(flat);
+    }
+
+
+
 }
+
